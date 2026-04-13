@@ -1,51 +1,63 @@
 import { DollarSign, Zap, MessageCircle, HeadphonesIcon } from "lucide-react";
+import { useReveal } from "@/hooks/use-reveal";
 
 const reasons = [
-  {
-    icon: DollarSign,
-    title: "Affordable Pricing",
-    description: "Quality web solutions at prices that fit local business budgets. No hidden costs.",
-  },
-  {
-    icon: Zap,
-    title: "Fast Delivery",
-    description: "Most projects delivered within 7-14 days. We value your time and deadlines.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Bangla & English Support",
-    description: "Communicate with us in your preferred language. We're local and easy to reach.",
-  },
-  {
-    icon: HeadphonesIcon,
-    title: "Ongoing Support",
-    description: "We don't disappear after delivery. Get continuous support and maintenance.",
-  },
+  { icon: DollarSign, title: "Affordable Pricing", description: "Quality web solutions at prices that fit local business budgets. No hidden costs.", color: "from-emerald-500 to-green-600" },
+  { icon: Zap, title: "Fast Delivery", description: "Most projects delivered within 7-14 days. We value your time and deadlines.", color: "from-amber-500 to-orange-500" },
+  { icon: MessageCircle, title: "Bangla & English", description: "Communicate with us in your preferred language. We're local and easy to reach.", color: "from-blue-500 to-indigo-500" },
+  { icon: HeadphonesIcon, title: "Ongoing Support", description: "We don't disappear after delivery. Get continuous support and maintenance.", color: "from-violet-500 to-purple-600" },
 ];
 
 const WhyChooseUs = () => {
+  const { ref, visible } = useReveal();
+
   return (
-    <section id="why-us" className="py-16 md:py-24 bg-surface">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Why Choose Us</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Your Local Technology Partner
+    <section id="why-us" className="py-20 md:py-32 gradient-hero text-hero-foreground relative overflow-hidden">
+      {/* Background blobs */}
+      <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-blob" />
+      <div className="absolute bottom-20 left-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-blob" style={{ animationDelay: "3s" }} />
+
+      <div className="container relative" ref={ref}>
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className={`reveal-left ${visible ? "visible" : ""}`}>
+            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary-glow text-sm font-semibold mb-4">
+              Why Choose Us
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+              Your Local
+              <br />
+              <span className="gradient-text">Technology Partner</span>
             </h2>
-            <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
+            <p className="mt-6 text-hero-foreground/60 text-lg leading-relaxed max-w-lg">
               We understand the needs of Bangladeshi businesses. Our team provides personalized, reliable, and affordable IT solutions to help your business succeed online.
             </p>
+
+            <div className="mt-8 flex items-center gap-6">
+              <div className="flex -space-x-3">
+                {["R", "F", "K", "A"].map((l, i) => (
+                  <div key={i} className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center text-primary-foreground font-bold text-sm border-2 border-hero">
+                    {l}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <p className="font-bold text-hero-foreground">50+ Happy Clients</p>
+                <p className="text-sm text-hero-foreground/50">and counting...</p>
+              </div>
+            </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
-            {reasons.map((reason) => (
-              <div key={reason.title} className="bg-card rounded-lg border p-5">
-                <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center mb-3">
-                  <reason.icon className="w-5 h-5 text-accent-foreground" />
+          <div className={`grid sm:grid-cols-2 gap-5 reveal-right ${visible ? "visible" : ""}`}>
+            {reasons.map((reason, i) => (
+              <div
+                key={reason.title}
+                className={`glass rounded-2xl p-6 hover:-translate-y-1 transition-all duration-300 stagger-${i + 1}`}
+              >
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${reason.color} flex items-center justify-center mb-4 shadow-lg`}>
+                  <reason.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-1">{reason.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{reason.description}</p>
+                <h3 className="font-bold text-hero-foreground mb-1.5">{reason.title}</h3>
+                <p className="text-sm text-hero-foreground/50 leading-relaxed">{reason.description}</p>
               </div>
             ))}
           </div>
