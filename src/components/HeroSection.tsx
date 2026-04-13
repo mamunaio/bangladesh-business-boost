@@ -7,7 +7,7 @@ const HeroSection = () => {
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-blob" />
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary-glow/5 rounded-full blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
         <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-primary/8 rounded-full blur-2xl animate-float" />
         {/* Grid pattern overlay */}
         <div
@@ -24,7 +24,7 @@ const HeroSection = () => {
           <div>
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-hero-foreground/90 text-sm font-medium mb-8 animate-in slide-in-from-bottom-4 duration-700">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-primary-glow animate-pulse" />
               🇧🇩 Trusted by 50+ Local Businesses in Bangladesh
             </div>
 
@@ -84,7 +84,7 @@ const HeroSection = () => {
               {/* Floating small card */}
               <div className="absolute bottom-16 left-0 glass rounded-xl p-4 animate-float shadow-xl" style={{ animationDelay: "1s" }}>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center animate-glow-ring">
                     <Play className="w-4 h-4 text-primary-foreground" />
                   </div>
                   <div>
