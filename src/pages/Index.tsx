@@ -1,8 +1,13 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import ServiceCategoriesStrip from "@/components/ServiceCategoriesStrip";
+import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
-import TrustSection from "@/components/TrustSection";
+import TemplatesSection from "@/components/TemplatesSection";
+import TechnologiesSection from "@/components/TechnologiesSection";
 import PortfolioSection from "@/components/PortfolioSection";
+import WorkingProcessSection from "@/components/WorkingProcessSection";
+import TrustSection from "@/components/TrustSection";
 import PricingSection from "@/components/PricingSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ContactSection from "@/components/ContactSection";
@@ -14,9 +19,14 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <HeroSection />
+      <ServiceCategoriesStrip />
+      <AboutSection />
       <ServicesSection />
-      <TrustSection />
+      <TemplatesSection />
+      <TechnologiesSection />
       <PortfolioSection />
+      <WorkingProcessSection />
+      <TrustSection />
       <PricingSection />
       <WhyChooseUs />
       <ContactSection />
