@@ -125,13 +125,6 @@ const Footer = () => {
             <div className="flex items-center gap-6 text-xs text-hero-foreground/30">
               <a href="#" className="hover:text-hero-foreground/60 transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-hero-foreground/60 transition-colors">Terms of Service</a>
-              <button
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center hover:bg-primary/20 transition-all group"
-                aria-label="Back to top"
-              >
-                <ArrowUp className="w-4 h-4 text-primary group-hover:-translate-y-0.5 transition-transform" />
-              </button>
             </div>
           </div>
         </div>

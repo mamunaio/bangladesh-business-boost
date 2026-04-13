@@ -7,7 +7,7 @@ import PricingSection from "@/components/PricingSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
+import FloatingControls from "@/components/FloatingControls";
 
 const Index = () => {
   return (
@@ -21,7 +21,7 @@ const Index = () => {
       <WhyChooseUs />
       <ContactSection />
       <Footer />
-      <WhatsAppFloat />
+      <FloatingControls />
     </div>
   );
 };
