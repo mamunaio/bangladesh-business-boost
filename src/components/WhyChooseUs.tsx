@@ -2,10 +2,10 @@ import { DollarSign, Zap, MessageCircle, HeadphonesIcon } from "lucide-react";
 import { useReveal } from "@/hooks/use-reveal";
 
 const reasons = [
-  { icon: DollarSign, title: "Affordable Pricing", description: "Quality web solutions at prices that fit local business budgets. No hidden costs.", color: "from-emerald-500 to-green-600" },
-  { icon: Zap, title: "Fast Delivery", description: "Most projects delivered within 7-14 days. We value your time and deadlines.", color: "from-amber-500 to-orange-500" },
-  { icon: MessageCircle, title: "Bangla & English", description: "Communicate with us in your preferred language. We're local and easy to reach.", color: "from-blue-500 to-indigo-500" },
-  { icon: HeadphonesIcon, title: "Ongoing Support", description: "We don't disappear after delivery. Get continuous support and maintenance.", color: "from-violet-500 to-purple-600" },
+  { icon: DollarSign, title: "Affordable Pricing", description: "Quality web solutions at prices that fit local business budgets. No hidden costs.", gradient: "from-emerald-400 to-green-500", delay: "0s" },
+  { icon: Zap, title: "Fast Delivery", description: "Most projects delivered within 7-14 days. We value your time and deadlines.", gradient: "from-amber-400 to-orange-500", delay: "0.3s" },
+  { icon: MessageCircle, title: "Bangla & English", description: "Communicate with us in your preferred language. We're local and easy to reach.", gradient: "from-blue-400 to-indigo-500", delay: "0.6s" },
+  { icon: HeadphonesIcon, title: "Ongoing Support", description: "We don't disappear after delivery. Get continuous support and maintenance.", gradient: "from-violet-400 to-purple-600", delay: "0.9s" },
 ];
 
 const WhyChooseUs = () => {
@@ -15,12 +15,12 @@ const WhyChooseUs = () => {
     <section id="why-us" className="py-20 md:py-32 gradient-hero text-hero-foreground relative overflow-hidden">
       {/* Background blobs */}
       <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-blob" />
-      <div className="absolute bottom-20 left-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-blob" style={{ animationDelay: "3s" }} />
+      <div className="absolute bottom-20 left-10 w-80 h-80 bg-primary-glow/5 rounded-full blur-3xl animate-blob" style={{ animationDelay: "3s" }} />
 
       <div className="container relative" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className={`reveal-left ${visible ? "visible" : ""}`}>
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary-glow text-sm font-semibold mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-4">
               Why Choose Us
             </span>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
@@ -51,10 +51,13 @@ const WhyChooseUs = () => {
             {reasons.map((reason, i) => (
               <div
                 key={reason.title}
-                className={`glass rounded-2xl p-6 hover:-translate-y-1 transition-all duration-300 stagger-${i + 1}`}
+                className={`glass rounded-2xl p-6 hover:-translate-y-1 transition-all duration-300 group stagger-${i + 1}`}
               >
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${reason.color} flex items-center justify-center mb-4 shadow-lg`}>
-                  <reason.icon className="w-6 h-6 text-white" />
+                <div className="relative mb-4">
+                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${reason.gradient} flex items-center justify-center shadow-lg animate-icon-float`} style={{ animationDelay: reason.delay }}>
+                    <reason.icon className="w-7 h-7 text-primary-foreground" strokeWidth={1.5} />
+                  </div>
+                  <div className={`absolute inset-0 w-14 h-14 rounded-xl bg-gradient-to-br ${reason.gradient} opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-500`} />
                 </div>
                 <h3 className="font-bold text-hero-foreground mb-1.5">{reason.title}</h3>
                 <p className="text-sm text-hero-foreground/50 leading-relaxed">{reason.description}</p>

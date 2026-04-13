@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -54,6 +55,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle />
           <a href="tel:+8801833925304">
             <Button variant={scrolled ? "outline" : "hero-outline"} size="sm" className="gap-2">
               <Phone className="w-4 h-4" />
@@ -67,13 +69,16 @@ const Navbar = () => {
           </a>
         </div>
 
-        <button
-          className={`md:hidden p-2 relative z-10 ${!scrolled && !open ? "text-hero-foreground" : ""}`}
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            className={`p-2 relative z-10 ${!scrolled && !open ? "text-hero-foreground" : ""}`}
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {open && (

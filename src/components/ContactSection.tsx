@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, Send, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,15 +19,16 @@ const ContactSection = () => {
   };
 
   const contactInfo = [
-    { icon: Phone, label: "Call Us", value: "+880 1833-925304", href: "tel:+8801833925304" },
-    { icon: MessageCircle, label: "WhatsApp", value: "Chat with us instantly", href: "https://wa.me/+8801833925304" },
-    { icon: Mail, label: "Email", value: "info@codenextit.com", href: "mailto:info@codenextit.com" },
-    { icon: MapPin, label: "Location", value: "Dhaka, Bangladesh", href: undefined },
+    { icon: Phone, label: "Call Us", value: "+880 1833-925304", href: "tel:+8801833925304", gradient: "from-violet-500 to-purple-600" },
+    { icon: MessageCircle, label: "WhatsApp", value: "Chat with us instantly", href: "https://wa.me/+8801833925304", gradient: "from-emerald-400 to-green-500" },
+    { icon: Mail, label: "Email", value: "info@codenextit.com", href: "mailto:info@codenextit.com", gradient: "from-cyan-400 to-teal-500" },
+    { icon: MapPin, label: "Location", value: "Dhaka, Bangladesh", href: undefined, gradient: "from-amber-400 to-orange-500" },
   ];
 
   return (
     <section id="contact" className="py-20 md:py-32 bg-surface relative overflow-hidden">
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-0 w-72 h-72 bg-primary-glow/5 rounded-full blur-3xl" />
 
       <div className="container relative" ref={ref}>
         <div className={`text-center max-w-2xl mx-auto mb-16 reveal ${visible ? "visible" : ""}`}>
@@ -43,15 +44,18 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className={`grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto`}>
+        <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
           <div className={`space-y-5 reveal-left ${visible ? "visible" : ""}`}>
             {contactInfo.map((item) => (
-              <div key={item.label} className="flex items-start gap-4 bg-card rounded-xl border p-5 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center flex-shrink-0 shadow-md">
-                  <item.icon className="w-5 h-5 text-primary-foreground" />
+              <div key={item.label} className="flex items-start gap-4 bg-card rounded-xl border p-5 hover:shadow-md hover:shadow-primary/5 transition-all duration-300 group">
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center flex-shrink-0 shadow-md group-hover:shadow-lg transition-shadow animate-icon-pulse`}>
+                  <item.icon className="w-5 h-5 text-primary-foreground" strokeWidth={1.5} />
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground">{item.label}</p>
+                <div className="flex-1">
+                  <p className="font-semibold text-foreground flex items-center gap-1">
+                    {item.label}
+                    {item.href && <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />}
+                  </p>
                   {item.href ? (
                     <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                       {item.value}
